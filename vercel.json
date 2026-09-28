@@ -1,0 +1,5 @@
+{
+  "buildCommand": "echo 'Ready'",
+  "outputDirectory": "web",
+  "framework": null
+}
