@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Neon Finger Tracking - Web AR</title>
+  <meta name="description" content="Real-time hand tracking and shape rendering in the browser using MediaPipe." />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+  <div class="app-container">
+    <!-- Camera & Canvas -->
+    <div class="video-container">
+      <video id="webcam" autoplay playsinline></video>
+      <canvas id="output_canvas"></canvas>
+      <div id="loading" class="glass-panel">
+        <div class="spinner"></div>
+        <p>Loading AI Model...</p>
+      </div>
+    </div>
+
+    <!-- UI Controls Overlay -->
+    <div class="hud">
+      <div class="glass-panel top-bar">
+        <div class="stat">FPS: <span id="fps-counter" class="highlight">0</span></div>
+        <div class="stat">Hands: <span id="hands-counter" class="highlight">0</span></div>
+      </div>
+
+      <div class="controls-wrapper">
+        <div class="glass-panel controls">
+          <h3>Settings</h3>
+          
+          <div class="control-group">
+            <label>Camera (HP/Android)</label>
+            <button id="btn-flip" class="btn-primary">Flip Camera 🔄</button>
+          </div>
+
+          <div class="control-group">
+            <label>Shape Mode</label>
+            <div class="segmented-control" id="shape-selector">
+              <button class="active" data-val="web">Web</button>
+              <button data-val="line">Line</button>
+              <button data-val="triangle">Tri</button>
+              <button data-val="rectangle">Rect</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>Fill Effect</label>
+            <div class="segmented-control" id="fill-selector">
+              <button class="active" data-val="none">None</button>
+              <button data-val="bw">B&W</button>
+              <button data-val="rainbow">Neon</button>
+            </div>
+          </div>
+          
+          <p class="hint">🎯 Gesture: Pinch thumb & index on one hand, pull back from the other to shoot an arrow!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MediaPipe Tasks Vision -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
